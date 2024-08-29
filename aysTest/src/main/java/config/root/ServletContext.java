@@ -66,7 +66,7 @@ public class ServletContext extends WebMvcConfigurationSupport {
 	}
 	
 	/**
-	 //쿠키를 이용한 Locale 이용시 이부분 주석 풀어서 사용하고 위에 있는 SessionLocaleResolver는 주석처리한다..
+	 //쿠키를 이용한 Locale 이용시 이부분 주석 풀어서 사용하고 위에 있는 SessionLocaleResolver는 주석처리한다...
 	  
 	 @Bean
 	 public CookieLocaleResolver clocaleResolver() {
