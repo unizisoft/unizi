@@ -4,9 +4,13 @@ import javax.sql.DataSource;
 
 import org.apache.tomcat.dbcp.dbcp2.BasicDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+//2024 09.04 추가
+@EnableTransactionManagement
 public class ContextDataSource {
 
 	@Bean
@@ -32,4 +36,10 @@ public class ContextDataSource {
 		return basicDataSource;
 	}
 	**/
+	
+	//2024 09.04 추가
+	@Bean
+	public DataSourceTransactionManager transactionManager() {
+		return new DataSourceTransactionManager(dataSource());
+	}
 }
