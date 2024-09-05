@@ -137,10 +137,10 @@ public class ServletContext extends WebMvcConfigurationSupport {
 		return tilesViewResolver;
 	}
 	
-	@Bean
+	@Bean 
     public TilesConfigurer tilesConfigurer() {
         final TilesConfigurer configurer = new TilesConfigurer();
-
+        String[] test = {"/WEB-INF/tiles/tiles.xml"}; 
         configurer.setDefinitions(new String[]{"/WEB-INF/tiles/tiles.xml"});
         configurer.setCheckRefresh(true);
         return configurer;
