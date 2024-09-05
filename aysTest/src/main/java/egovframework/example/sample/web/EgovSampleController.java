@@ -209,4 +209,9 @@ public class EgovSampleController {
 		return "forward:/egovSampleList.do";
 	}
 
+	
+	@RequestMapping("/base.do")
+	public String base() throws Exception {
+		return "base/base";
+	}
 }

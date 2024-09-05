@@ -7,6 +7,7 @@ import javax.servlet.FilterRegistration;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
+import javax.servlet.jsp.JspApplicationContext;
 
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 import config.root.RootContext;
 import egovframework.rte.ptl.mvc.filter.HTMLTagFilter;
 
+// SpringBootServletInitializer는 WebApplicationInitializer의 구현체이므로 
 public class WebInitializer implements WebApplicationInitializer {
 
 	@Override
@@ -25,6 +27,7 @@ public class WebInitializer implements WebApplicationInitializer {
 		registerCharacterEncodingFilter(servletContext);
 		registerHtmlTagFilter(servletContext);
 	}
+
 
 	private void registerDisoatcherServlet(ServletContext servletContext) {
 		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
@@ -50,6 +53,9 @@ public class WebInitializer implements WebApplicationInitializer {
 	private void registerHtmlTagFilter(ServletContext servletContext) {
 		FilterRegistration.Dynamic htmlTagFilter = servletContext.addFilter("HTMLTagFilter", new HTMLTagFilter());
 		htmlTagFilter.addMappingForUrlPatterns(null, false, "*.do");
+	
 	}
+	
+	
 
 }

@@ -25,6 +25,8 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
+import org.springframework.web.servlet.view.tiles2.TilesView;
+import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 
 import egovframework.example.cmmn.web.EgovImgPaginationRenderer;
 import egovframework.rte.ptl.mvc.tags.ui.pagination.DefaultPaginationManager;
@@ -124,4 +126,23 @@ public class ServletContext extends WebMvcConfigurationSupport {
 	protected void addViewController(ViewControllerRegistry registry){
 		registry.addViewController("/cmmn/validator.do").setViewName("cmmn/validator");
 	}
+	
+	
+	//tiles 세팅도 여기에 해보자
+	@Bean
+	public UrlBasedViewResolver tilesViewResolver() {
+		UrlBasedViewResolver tilesViewResolver = new UrlBasedViewResolver();
+		tilesViewResolver.setViewClass(org.springframework.web.servlet.view.tiles3.TilesView.class);
+		tilesViewResolver.setOrder(0);
+		return tilesViewResolver;
+	}
+	
+	@Bean
+    public TilesConfigurer tilesConfigurer() {
+        final TilesConfigurer configurer = new TilesConfigurer();
+
+        configurer.setDefinitions(new String[]{"/WEB-INF/tiles/tiles.xml"});
+        configurer.setCheckRefresh(true);
+        return configurer;
+    }
 }
